@@ -1,8 +1,6 @@
-import { default as RebassTheme } from "@rebass/preset";
 import { colors } from "./tokens/colors.tokens";
 
 export const theme = {
-  ...RebassTheme,
   space: [0, 4, 8, 16, 32, 64, 128, 256, 512],
   fonts: {
     body: "Poppins, sans-serif",
@@ -20,9 +18,11 @@ export const theme = {
     heading: 1.25,
   },
   colors: {
+    ...colors,
     black: colors.black,
     white: colors.white,
     darkBackground: colors.gray900,
+    darkText: colors.gray900,
     text: colors.gray900,
     background: colors.white,
     primary: "#609",

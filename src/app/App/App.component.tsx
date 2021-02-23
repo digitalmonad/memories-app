@@ -25,7 +25,7 @@ export const App = () => {
   return (
     <Flex flexDirection={"column"}>
       <Router>
-        <AppBar appName='Diary' />
+        <AppBar appName='memories' />
         <Route path={"/"} component={DashboardPage}>
           <Suspense fallback={<div>Loading...</div>}>
             <DashboardPage />
