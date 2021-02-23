@@ -2,7 +2,12 @@ import { App } from "./app/App";
 import { Provider } from "react-redux";
 import React from "react";
 import ReactDOM from "react-dom";
+import { setupServer } from "./utils/mockApiServer/server";
 import { store } from "./app/store";
+
+if (process.env.NODE_ENV === "development") {
+  setupServer();
+}
 
 ReactDOM.render(
   <React.StrictMode>
