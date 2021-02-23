@@ -1,4 +1,4 @@
-export interface Day {
+export type Day = {
   id?: string;
   title: string;
   type: "private" | "public";
@@ -6,4 +6,4 @@ export interface Day {
   updatedAt?: string;
   userId?: string;
   entryIds: string[] | null;
-}
+};

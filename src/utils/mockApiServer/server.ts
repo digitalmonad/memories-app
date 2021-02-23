@@ -1,7 +1,7 @@
 import { Factory, Model, Response, Server, belongsTo, hasMany } from "miragejs";
 
-import dayRoutes from "./routes/day.routes";
-import userRoutes from "./routes/user.routes";
+import { authRoutes } from "./routes/user.routes";
+import { dayRoutes } from "./routes/day.routes";
 
 export const handleErrors = (error: any, message = "An error ocurred") => {
   return new Response(400, undefined, {
@@ -47,8 +47,8 @@ export const setupServer = (env?: string): Server => {
       this.get("/days/entries/:id", dayRoutes.getEntries);
       this.get("/days/:id", dayRoutes.getDay);
 
-      this.post("/auth/login", userRoutes.login);
-      this.post("/auth/signup", userRoutes.signup);
+      this.post("/auth/login", authRoutes.login);
+      this.post("/auth/signup", authRoutes.signup);
 
       this.post("/days/", dayRoutes.createDay);
       this.post("/days/entry/:id", dayRoutes.createEntry);
