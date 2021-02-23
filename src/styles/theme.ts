@@ -2,6 +2,7 @@ import { colors } from "./tokens/colors.tokens";
 
 export const theme = {
   space: [0, 4, 8, 16, 32, 64, 128, 256, 512],
+  breakpoints: ["40em", "52em", "64em"],
   fonts: {
     body: "Poppins, sans-serif",
     heading: "Poppins, sans-serif",
@@ -28,6 +29,7 @@ export const theme = {
     primary: "#609",
     secondary: "#306",
     muted: "#f6f6f6",
+    border: colors.gray50,
   },
   styles: {
     root: {
@@ -115,3 +117,5 @@ export const theme = {
     },
   },
 };
+
+console.log(theme);
