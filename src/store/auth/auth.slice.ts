@@ -1,4 +1,11 @@
-import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import {
+  PayloadAction,
+  createAsyncThunk,
+  createSelector,
+  createSlice,
+} from "@reduxjs/toolkit";
+
+import { RootState } from "../../store/store.config";
 
 const SLICE_NAME = "auth";
 
@@ -34,3 +41,6 @@ const loginUser = createAsyncThunk(
 
 export const authActions = authSlice.actions;
 export const authReducer = authSlice.reducer;
+export const authSelectors = {
+  selectAuthToken: (state: RootState) => state.auth.token,
+};

@@ -11,6 +11,7 @@ import React, { Suspense, lazy, useEffect } from "react";
 import { Route, BrowserRouter as Router } from "react-router-dom";
 
 import { AppBar } from "../../components/organisms/AppBar/AppBar.component";
+import { authSelectors } from "../../store/auth/auth.slice";
 import { useAppSelector } from "../../store/store.config";
 
 const AuthPage = lazy(() => import("../../pages/AuthPage"));
@@ -20,15 +21,15 @@ export const App = () => {
   // useEffect(() => {
 
   // }, [])
-  const isLoggedIn = useAppSelector((state) => state.auth.token);
+  const isLoggedIn = useAppSelector(authSelectors.selectAuthToken);
 
   return (
-    <Flex flexDirection={"column"}>
+    <Flex flexDirection={"column"} height={"100vh"}>
       <Router>
         <AppBar appName='memories' />
         <Route path={"/"} component={DashboardPage}>
           <Suspense fallback={<div>Loading...</div>}>
-            <DashboardPage />
+            {!isLoggedIn ? <DashboardPage /> : <AuthPage />}
           </Suspense>
         </Route>
       </Router>
