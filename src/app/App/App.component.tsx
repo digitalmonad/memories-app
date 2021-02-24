@@ -29,7 +29,7 @@ export const App = () => {
         <AppBar appName='memories' />
         <Route path={"/"} component={DashboardPage}>
           <Suspense fallback={<div>Loading...</div>}>
-            {!isLoggedIn ? <DashboardPage /> : <AuthPage />}
+            {isLoggedIn ? <DashboardPage /> : <AuthPage />}
           </Suspense>
         </Route>
       </Router>

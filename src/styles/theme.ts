@@ -31,6 +31,17 @@ export const theme = {
     muted: "#f6f6f6",
     border: colors.gray50,
   },
+  shadows: {
+    default: "0 0 4px rgba(0, 0, 0, 0.125)",
+  },
+  variants: {
+    card: {
+      p: 2,
+      bg: "background",
+      boxShadow: "default",
+      borderRadius: 2,
+    },
+  },
   styles: {
     root: {
       fontFamily: "body",

@@ -42,7 +42,7 @@ export const setupServer = (env?: string): Server => {
     },
 
     routes(): void {
-      this.urlPrefix = "https://diary.app";
+      this.urlPrefix = "https://memories.app";
 
       this.get("/days/entries/:id", dayRoutes.getEntries);
       this.get("/days/:id", dayRoutes.getDay);

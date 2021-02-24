@@ -1,6 +1,6 @@
 import { Request, Response } from "miragejs";
 
-import { User } from "../../../models/user.models";
+import { User } from "../../../types/user.types";
 import { handleErrors } from "../server";
 import { randomBytes } from "crypto";
 

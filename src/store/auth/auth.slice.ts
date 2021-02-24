@@ -6,6 +6,7 @@ import {
 } from "@reduxjs/toolkit";
 
 import { RootState } from "../../store/store.config";
+import { httpClient } from "../../app/httpClient";
 
 const SLICE_NAME = "auth";
 
@@ -34,12 +35,21 @@ const authSlice = createSlice({
   },
 });
 
-const loginUser = createAsyncThunk(
-  `${SLICE_NAME}/loginUser`,
-  (state, thunkAPI) => {}
-);
+const authAsyncActions = {
+  loginUser: createAsyncThunk<void, { username: string; password: string }>(
+    `${SLICE_NAME}/loginUser`,
+    async ({ username, password }, { dispatch }) => {
+      const response = await httpClient.post("/auth/login", {
+        username,
+        password,
+      });
 
-export const authActions = authSlice.actions;
+      console.log(response);
+    }
+  ),
+};
+
+export const authActions = { ...authSlice.actions, ...authAsyncActions };
 export const authReducer = authSlice.reducer;
 export const authSelectors = {
   selectAuthToken: (state: RootState) => state.auth.token,

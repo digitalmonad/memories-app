@@ -1,4 +1,4 @@
-import { Day, Entry, User } from "../../../models";
+import { Day, Entry, User } from "../../../types";
 import { Request, Response } from "miragejs";
 
 import dayjs from "dayjs";

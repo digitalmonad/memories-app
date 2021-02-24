@@ -1,6 +1,6 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
-import { User } from "../../models";
+import { User } from "../../types";
 
 const SLICE_NAME = "user";
 

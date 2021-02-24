@@ -1,8 +1,9 @@
+import React, { Component } from "react";
+import { Provider as StoreProvider, connect } from "react-redux";
+
 import { App } from "./app/App";
 import { GlobalStyle } from "./styles/GlobalStyle";
-import React from "react";
 import ReactDOM from "react-dom";
-import { Provider as StoreProvider } from "react-redux";
 import { ThemeProvider } from "styled-components";
 import { setupServer } from "./utils/mockApiServer/server";
 import { store } from "./store/store.config";
@@ -14,9 +15,10 @@ if (process.env.NODE_ENV === "development") {
 
 ReactDOM.render(
   <React.StrictMode>
-    <StoreProvider store={store}>
+    <StoreProvider {...{ store }}>
       <ThemeProvider {...{ theme }}>
         <GlobalStyle />
+
         <App />
       </ThemeProvider>
     </StoreProvider>
