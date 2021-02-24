@@ -1,4 +1,23 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
+# Memories
+
+Simplistic diary-like app for saving your memories :)
+
+Features:
+
+- [x] Custom notifications system
+- [x] User can log in
+- [ ] User can sign in
+- [ ] New "day" can be created and edited
+- [ ] New entries for particular day can by created and edited
+- [ ] Markdown support
+- [ ] Entries can be tagged and filtered by tags
+
+On this project I wanted to try out these technologies:
+
+- [Redux Toolkit](https://redux-toolkit.js.org/) for cleaner Redux code
+- [Rebass](https://rebassjs.org/) as component library for styled-components
+- [Typescript](https://www.typescriptlang.org/) for type checking
+- [MirageJS](https://miragejs.com/) to mock API
 
 ## Available Scripts
 
