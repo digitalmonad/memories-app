@@ -1,6 +1,6 @@
 import { AuthForm } from "./components/AuthForm/AuthForm.component";
 import { Flex } from "rebass/styled-components";
-import { LoginCredentials } from "../../types";
+import { LoginCredentialsT } from "../../types";
 import React from "react";
 import { authActions } from "../../store/auth/auth.slice";
 import { useDispatch } from "react-redux";
@@ -8,7 +8,7 @@ import { useDispatch } from "react-redux";
 export const AuthPage = () => {
   const dispatch = useDispatch();
 
-  const onSubmit = (credentials: LoginCredentials) => {
+  const onSubmit = (credentials: LoginCredentialsT) => {
     dispatch(authActions.loginUser(credentials));
   };
   return (

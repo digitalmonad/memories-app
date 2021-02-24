@@ -1,4 +1,4 @@
-import { Day, Entry, User } from "../../../types";
+import { DayT, EntryT, UserT } from "../../../types";
 import { Request, Response } from "miragejs";
 
 import dayjs from "dayjs";
@@ -8,11 +8,11 @@ export const dayRoutes = {
   createDay: (
     schema: any,
     req: Request
-  ): { user: User; day: Day } | Response => {
+  ): { user: UserT; day: DayT } | Response => {
     try {
       const { title, type, userId } = JSON.parse(
         req.requestBody
-      ) as Partial<Day>;
+      ) as Partial<DayT>;
       const exUser = schema.users.findBy({ id: userId });
       if (!exUser) {
         return handleErrors(null, "No such user exists.");
@@ -35,25 +35,25 @@ export const dayRoutes = {
     }
   },
 
-  updateDay: (schema: any, req: Request): Day | Response => {
+  updateDay: (schema: any, req: Request): DayT | Response => {
     try {
       const day = schema.day.find(req.params.id);
-      const data = JSON.parse(req.requestBody) as Partial<Day>;
+      const data = JSON.parse(req.requestBody) as Partial<DayT>;
       const now = dayjs().format();
       day.update({
         ...data,
         updatedAt: now,
       });
-      return day.attrs as Day;
+      return day.attrs as DayT;
     } catch (error) {
       return handleErrors(error, "Failed to update the requested day.");
     }
   },
 
-  getDay: (schema: any, req: Request): Day[] | Response => {
+  getDay: (schema: any, req: Request): DayT[] | Response => {
     try {
       const user = schema.users.find(req.params.id);
-      return user.day as Day[];
+      return user.day as DayT[];
     } catch (error) {
       return handleErrors(error, "Could not get data for the requested days.");
     }
@@ -62,10 +62,10 @@ export const dayRoutes = {
   createEntry: (
     schema: any,
     req: Request
-  ): { day: Day; entry: Entry } | Response => {
+  ): { day: DayT; entry: EntryT } | Response => {
     try {
       const day = schema.days.find(req.params.id);
-      const { title, content } = JSON.parse(req.requestBody) as Partial<Entry>;
+      const { title, content } = JSON.parse(req.requestBody) as Partial<EntryT>;
       const now = dayjs().format();
       const entry = day.createEntry({
         title,
@@ -86,7 +86,7 @@ export const dayRoutes = {
     }
   },
 
-  getEntries: (schema: any, req: Request): { entries: Entry[] } | Response => {
+  getEntries: (schema: any, req: Request): { entries: EntryT[] } | Response => {
     try {
       const day = schema.days.find(req.params.id);
       return day.entry;
@@ -95,16 +95,16 @@ export const dayRoutes = {
     }
   },
 
-  updateEntry: (schema: any, req: Request): Entry | Response => {
+  updateEntry: (schema: any, req: Request): EntryT | Response => {
     try {
       const entry = schema.entries.find(req.params.id);
-      const data = JSON.parse(req.requestBody) as Partial<Entry>;
+      const data = JSON.parse(req.requestBody) as Partial<EntryT>;
       const now = dayjs().format();
       entry.update({
         ...data,
         updatedAt: now,
       });
-      return entry.attrs as Entry;
+      return entry.attrs as EntryT;
     } catch (error) {
       return handleErrors(error, "Failed to update the entry.");
     }

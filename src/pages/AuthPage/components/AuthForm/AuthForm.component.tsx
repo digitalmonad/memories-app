@@ -6,7 +6,7 @@ import { Input, Label } from "@rebass/forms/styled-components";
 import React, { FC, useState } from "react";
 
 import { FormWrapper } from "./AuthForm.styled";
-import { LoginCredentials } from "../../../../types";
+import { LoginCredentialsT } from "../../../../types";
 
 const validationSchema = yup.object({
   username: yup.string(),
@@ -18,12 +18,12 @@ const MyInput = ({ field, form, ...props }: FieldProps) => {
 };
 
 type AuthFormPropsT = {
-  onSubmit: (credentials: LoginCredentials) => void;
+  onSubmit: (credentials: LoginCredentialsT) => void;
 };
 
 export const AuthForm: FC<AuthFormPropsT> = ({ onSubmit }) => {
   const [isLogin, setIsLogin] = useState(true);
-  const handleLogin = (e: LoginCredentials) => {
+  const handleLogin = (e: LoginCredentialsT) => {
     onSubmit(e);
   };
   return (
@@ -35,7 +35,6 @@ export const AuthForm: FC<AuthFormPropsT> = ({ onSubmit }) => {
       >
         {({ errors, touched }) => (
           <Form>
-            {console.log(errors)}
             <Label htmlFor={"username"}>Username</Label>
             <Field name={"username"} component={MyInput} />
             <Label htmlFor={"password"}>Password</Label>

@@ -1,4 +1,4 @@
-export type Entry = {
+export type EntryT = {
   id?: string;
   title: string;
   content: string;

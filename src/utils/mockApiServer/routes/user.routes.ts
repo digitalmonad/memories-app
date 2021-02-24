@@ -1,6 +1,6 @@
 import { Request, Response } from "miragejs";
 
-import { User } from "../../../types/user.types";
+import { UserT } from "../../../types/user.types";
 import { handleErrors } from "../server";
 import { randomBytes } from "crypto";
 
@@ -8,7 +8,7 @@ const generateToken = () => randomBytes(8).toString("hex");
 
 export interface AuthResponse {
   token: string;
-  user: User;
+  user: UserT;
 }
 export const authRoutes = {
   login: (schema: any, req: Request): AuthResponse | Response => {
@@ -22,7 +22,7 @@ export const authRoutes = {
     }
     const token = generateToken();
     return {
-      user: user.attrs as User,
+      user: user.attrs as UserT,
       token,
     };
   },
@@ -36,7 +36,7 @@ export const authRoutes = {
     const user = schema.users.create(data);
     const token = generateToken();
     return {
-      user: user.attrs as User,
+      user: user.attrs as UserT,
       token,
     };
   },

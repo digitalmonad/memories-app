@@ -1,4 +1,4 @@
-export type Day = {
+export type DayT = {
   id?: string;
   title: string;
   type: "private" | "public";

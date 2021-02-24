@@ -1,11 +1,11 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
-import { User } from "../../types";
+import { UserT } from "../../types";
 
 const SLICE_NAME = "user";
 
 type UserStateT = {
-  actualUser: User | null;
+  actualUser: UserT | null;
 };
 
 const initialState: UserStateT = {
@@ -13,7 +13,7 @@ const initialState: UserStateT = {
 };
 
 type SetUserActionPayloadT = {
-  user: User;
+  user: UserT;
 };
 
 const userSlice = createSlice({

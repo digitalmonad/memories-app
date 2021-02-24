@@ -20,13 +20,11 @@ httpClient.interceptors.response.use(
       response?: AxiosResponse;
       request?: XMLHttpRequest;
     } = error;
-    if (response) {
-      if (response.status >= 400 && response.status < 500) {
-        return null;
-      }
-    } else if (request) {
-      return null;
+    if (process.env.NODE_ENV === "development") {
+      const errorMessage = response?.data?.data?.message;
+      return Promise.reject(new Error(errorMessage));
     }
+
     return Promise.reject(error);
   }
 );

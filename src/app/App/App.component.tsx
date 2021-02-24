@@ -11,11 +11,13 @@ import React, { Suspense, lazy, useEffect } from "react";
 import { Route, BrowserRouter as Router } from "react-router-dom";
 
 import { AppBar } from "../../components/organisms/AppBar/AppBar.component";
+import { Notification } from "../../components/shared/Notification/Notification.component";
 import { authSelectors } from "../../store/auth/auth.slice";
 import { useAppSelector } from "../../store/store.config";
 
 const AuthPage = lazy(() => import("../../pages/AuthPage"));
 const DashboardPage = lazy(() => import("../../pages/DashboardPage"));
+
 
 export const App = () => {
   // useEffect(() => {
@@ -25,6 +27,7 @@ export const App = () => {
 
   return (
     <Flex flexDirection={"column"} height={"100vh"}>
+      <Notification />
       <Router>
         <AppBar appName='memories' />
         <Route path={"/"} component={DashboardPage}>
